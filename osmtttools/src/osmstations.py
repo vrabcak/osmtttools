@@ -70,7 +70,7 @@ class StationList :
     def loadCSV(self,csvfile):
         f = open(csvfile)
         for line in f :
-            self.parseCSVFileLine(line);
+            self.parseCSVFileLine(unicode(line,'cp1250'));
 
     def recordsCount(self):
         return len( self.OSMstlist ), len( self.UICstlist )
@@ -153,14 +153,14 @@ if __name__ == "__main__":
     stlist=StationList()
     stlist.loadCSV(CSVFILE)
     stlist.loadOSM(OSMFILE)
-    print ("Loaded ",stlist.recordsCount(),"records.")
+    print "Loaded ",stlist.recordsCount(),"records."
 
     
     #stlist.printOSMStList();
 
 
-    print ("Finding matches")
+    print "Finding matches"
     stlist.findMatches()
-    print ("Done.")
+    print "Done."
     stlist.writeWiki()
     
